@@ -23,10 +23,10 @@ def random_rectangle_single_channel(full_size: int = 16,
     # lower left corner of the rectangle
     bx, by = np.random.randint(0, full_size - 1 - w), np.random.randint(0, full_size - 1 - h)
 
-    img = np.zeros((full_size, full_size), dtype=float)
+    img = np.zeros((full_size, full_size), dtype=np.float32)
     img[by:by + h, bx:bx + w] = 1.0
 
-    return img, (bx, by, w, h)
+    return img, [bx, by, w, h]
 
 
 def random_rectangle_rbg(full_size: int = 16,
@@ -38,7 +38,7 @@ def random_rectangle_rbg(full_size: int = 16,
     img = np.zeros((3, full_size, full_size))
     img[random_channel], (bx, by, w, h) = random_rectangle_single_channel(full_size, seed)
 
-    return img, (bx, by, w, h, random_channel)
+    return img, [bx, by, w, h, random_channel]
 
 
 def plot_helper(img, ax=None):
