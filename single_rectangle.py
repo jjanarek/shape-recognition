@@ -75,3 +75,5 @@ def plot_performance(model, examples, targets):
         x, y, w, h = bbox0 # target bbox
         ax.text(x, y - 0.15, "IoU={:.2f}".format(iou), fontsize=10)
 
+    return fig
+
